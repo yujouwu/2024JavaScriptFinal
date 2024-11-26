@@ -6,8 +6,9 @@
 //   const url = `${baseUrl}/api/livejs/v1/customer/${apiPath}/products`;
 //   try {
 //     const response = await axios.get(url);
-//     let productData = response.data.products;
-//     return productData;
+//     productData = response.data.products;
+//     renderProduct(productData);
+//     getCategory();
 //   } catch (error) {
 //     console.error(error.response.data || "取得產品列表失敗");
 //   }
