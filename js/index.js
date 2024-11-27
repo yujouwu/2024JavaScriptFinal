@@ -1,9 +1,10 @@
 import axios from "axios";
 import { apiPath, baseUrl, token } from "./config";
-// import { getProductList } from "./api";
+import { getProductList } from "./api";
 import validate from "validate.js";
 import { Swal, Toast } from "./sweetalert2";
 import { showLoading, hideLoading } from "./loading";
+
 
 // 渲染產品列表
 const productWrap = document.querySelector(".productWrap");
@@ -61,19 +62,21 @@ let productData = [];
 let cartData = [];
 let cartTotal = 0;
 
-// 取得產品列表
-const getProductList = async () => {
-  const url = `${baseUrl}/api/livejs/v1/customer/${apiPath}/products`;
-  try {
-    const response = await axios.get(url);
-    // console.log(response.data.products);
-    productData = response.data.products;
-    renderProduct(productData);
-    getCategory();
-  } catch (error) {
-    console.error(error.response.data || "取得產品列表失敗");
-  }
-};
+
+// // 取得產品列表
+// const getProductList = async () => {
+//   const url = `${baseUrl}/api/livejs/v1/customer/${apiPath}/products`;
+//   try {
+//     const response = await axios.get(url);
+//     // console.log(response.data.products);
+//     productData = response.data.products;
+//     renderProduct(productData);
+//     getCategory();
+//   } catch (error) {
+//     console.error(error.response.data || "取得產品列表失敗");
+//   }
+// };
+
 // 渲染產品列表
 function renderProduct(productData) {
   let str = "";
@@ -108,9 +111,7 @@ const getCartList = async () => {
     const response = await axios.get(url);
     cartData = response.data.carts;
     cartTotal = response.data.finalTotal;
-    renderCart(cartData);
-    console.log(cartData);
-    
+    renderCart(cartData);   
   } catch (error) {
     console.error(error.response.data.message);
   }
@@ -353,7 +354,7 @@ function validateField(item){
 }
 
 // 取得所有產品類別 category for select 篩選
-function getCategory(){
+function getCategory(productData){
   let unSort = productData.map(item => item.category);
   let sorted = unSort.filter((item, index) => unSort.indexOf(item) === index);
   renderCategory(sorted)
@@ -367,8 +368,15 @@ function renderCategory(sorted){
   productSelect.innerHTML = str;
 }
 
-function init() {
-  getProductList()
+async function init() {
+  try {
+    const productData = await getProductList(); // 從 API 獲取產品列表
+    renderProduct(productData);
+    getCategory(productData);
+  } catch (error) {
+    console.error('初始化失敗', error)
+  }
+
   getCartList();
 }
 
