@@ -1,8 +1,3 @@
-.wrap {
-  max-width: 1110px;
-  margin: 0 auto;
-}
-
 .topBar {
   border-bottom: 40px solid #000000;
   margin-bottom: 30px;
@@ -129,7 +124,7 @@
 
 .banner {
   position: relative;
-  background-image: url("https://github.com/hexschool/js-training/blob/main/%E7%AC%AC%E4%B9%9D%E9%80%B1%E4%B8%BB%E7%B7%9A%E4%BB%BB%E5%8B%99%E5%9C%96%E5%BA%AB/3ewLAKn.png?raw=true");
+  background-image: url("https://i.imgur.com/3ewLAKn.png");
   background-position: center center;
   background-repeat: no-repeat;
   background-size: cover;
@@ -541,13 +536,13 @@
   text-align: left;
 }
 
-.shoppingCart-table tbody tr {
+.shoppingCart-table tr {
   border-bottom: 1px solid #B9B9B9;
 }
 
-// .shoppingCart-table tr:first-child, .shoppingCart-table tr:last-child {
-//   border-bottom: 0;
-// }
+.shoppingCart-table tr:first-child, .shoppingCart-table tr:last-child {
+  border-bottom: 0;
+}
 
 @media (max-width: 767px) {
   .shoppingCart-table {
@@ -569,32 +564,11 @@
   max-width: 80px;
 }
 
-.shoppingCart-qty{
-  display: flex;
-  gap: 12px;
-}
-
-.minusBtn, .plusBtn {
-  width: 30px;
-  height: 30px;
-  background: #f2f2f2;
-  border: 1px solid lightgray;
-  border-radius: 2px;
-  font-size: 24px;
-  cursor: pointer;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  &:hover{
-    background-color: lightgray;
-  }
-}
-
 .discardBtn {
   text-align: right;
 }
 
-.discardBtn  {
+.discardBtn a {
   text-decoration: none;
   display: inline-block;
   padding: 10px;
@@ -602,13 +576,13 @@
   color: #000000;
 }
 
-.discardBtn:hover {
+.discardBtn a:hover {
   color: #6A33F8;
   -webkit-transform: scale(1.3);
           transform: scale(1.3);
 }
 
-.discardAllBtn {
+.discardAllBtn, .chartBtn,.sortBtn {
   display: inline-block;
   text-decoration: none;
   padding: 5px 15px;
@@ -618,10 +592,20 @@
   font-size: 1.25rem;
 }
 
-.discardAllBtn:hover {
-  background-color: #000000;
-  color: #FFFFFF;
+.discardAllBtn, .chartBtn, .sortBtn{
+  &:hover {
+    background-color: #000000;
+    color: #FFFFFF;
+  }
 }
+.chartBtn{
+  &.active{
+    background-color: #000000;
+    color: #FFFFFF;
+    pointer-events: none;
+  }
+}
+
 
 .orderInfo {
   padding: 60px 0;
@@ -736,36 +720,10 @@
   opacity: 0.8;
 }
 
-.orderStatus {
-  position: relative;
-}
-
-.index-page .orderStatus a {
-  position: absolute;
+.orderStatus a {
   padding: 10px;
-  top: 0;
-  bottom: 0;
-  right: 0;
-  left: 0;
   display: block;
-  text-decoration: none;
-  color: #FFFFFF;
-}
-
-.orderStatus-unDone {
-  background-color: #747474;
-}
-
-.orderStatus-unDone:hover {
-  background-color: #000000;
-}
-
-.orderStatus-done {
-  background-color: #000000;
-}
-
-.orderStatus-done:hover {
-  background-color: #747474;
+  color: #0067CE;
 }
 
 .orderTableWrap {
@@ -780,4 +738,3 @@
   display: none;
 }
 /*# sourceMappingURL=all.css.map */
-
