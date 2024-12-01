@@ -1,4 +1,4 @@
-import{e as m,S as p,h as B,i as O,j as A,T as $,k as C}from"./utils-DNIPmgBY.js";import{s as d,h as l}from"./index-YpuxuV4G.js";let c=!0;const S=async()=>{try{d(),s=(await C()).data.orders,s=f(s,c),i(),u()}catch(t){console.error(t.response.data.message)}finally{l()}},g=document.querySelector(".orderPage-table tbody");let s=[];const i=()=>{f(s,c),g.innerHTML=s.map(t=>{let r=t.products.map(e=>`<p>${e.title} x ${e.quantity}</p>`).join("");return`<tr data-id="${t.id}">
+import{e as m,S as p,h as B,i as O,j as A,T as $,k as C}from"./utils-DNIPmgBY.js";import{s as d,h as l}from"./main-Dw0SVMKm.js";let c=!0;const S=async()=>{try{d(),s=(await C()).data.orders,s=f(s,c),i(),u()}catch(t){console.error(t.response.data.message)}finally{l()}},g=document.querySelector(".orderPage-table tbody");let s=[];const i=()=>{f(s,c),g.innerHTML=s.map(t=>{let r=t.products.map(e=>`<p>${e.title} x ${e.quantity}</p>`).join("");return`<tr data-id="${t.id}">
             <td>${t.id}</td>
             <td>
               <p>${t.user.name}</p>
